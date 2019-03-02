@@ -1,0 +1,18 @@
+﻿@using Umbraco.Web.Models;
+@using MuaBan.Models;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Mastertemplate.cshtml";
+}
+
+@* the fun starts here *@
+<!-- NAVIGATION -->
+@{ Html.RenderAction("RenderNavigation", "Home"); }
+<!-- /NAVIGATION -->
+@{ List<Product> list = (List<Product>)Session["list"];
+    foreach (Product abc in list)
+    {
+        <a>@abc.Brandproduct</a>
+    }
+    }
+
