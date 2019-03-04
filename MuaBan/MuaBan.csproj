@@ -320,6 +320,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\HomeController.cs" />
+    <Compile Include="Controller\ProductBrandController.cs" />
     <Compile Include="Controller\ProductDetailController.cs" />
     <Compile Include="Controller\SiteShareLayoutController.cs" />
     <Compile Include="Models\Menu.cs" />
@@ -378,14 +379,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Partials\ShareLayout\Footer.cshtml" />
     <Content Include="Views\Partials\Home\Navigation.cshtml" />
-    <Content Include="Views\Partials\Home\Section1.cshtml" />
-    <Content Include="Views\Partials\Home\Section2.cshtml" />
-    <Content Include="Views\Partials\Home\Section3.cshtml" />
-    <Content Include="Views\Partials\Home\Section4.cshtml" />
+    <Content Include="Views\Partials\Home\SectionHome.cshtml" />
     <Content Include="Views\AboutUs.cshtml" />
     <Content Include="Views\Contact.cshtml" />
     <Content Include="Views\ProductDetail.cshtml" />
+    <Content Include="Views\ProductBrand.cshtml" />
     <Content Include="Views\Partials\ProductDetail\SectionDetail.cshtml" />
+    <Content Include="Views\Partials\ProductBrand\SectionBrand.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

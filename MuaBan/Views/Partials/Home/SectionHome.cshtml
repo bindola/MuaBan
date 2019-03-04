@@ -8,43 +8,45 @@
 
 @helper GetProduct()
 {
-    List<Product> List = new List<Product>();
-    for (int i = 0; i < 9; i++)
-    {
+List<Product> List = new List<Product>();
 
-        int j = i + 1;
-        string Brandproduct = "BrandProduct" + j;
-        string Nameproduct = "NameProduct" + j;
-        string ImageProductShow = "ImageProductShow" + j;
-        string ImageProductDetail1 = "ImageProductDetail1" + j;
-        string ImageProductDetail2 = "ImageProductDetail2" + j;
-        string ImageProductDetail3 = "ImageProductDetail3" + j;
-        string Price = "Price" + j;
-        string check = "Check" + j;
-        string topsell = "TopSell" + j;
-        string Decription = "Decription" + j;
-        Product temp = new Product();
-        temp.Brandproduct = Umbraco.AssignedContentItem.GetPropertyValue(Brandproduct).ToString();
-        temp.Nameproduct = Umbraco.AssignedContentItem.GetPropertyValue(Nameproduct).ToString();
-        temp.ImageProductShow = "." + Umbraco.Field(ImageProductShow).ToString();
-        temp.ImageProductDetail1 = "." + Umbraco.Field(ImageProductDetail1).ToString();
-        temp.ImageProductDetail2 = "." + Umbraco.Field(ImageProductDetail2).ToString();
-        temp.ImageProductDetail3 = "." + Umbraco.Field(ImageProductDetail3).ToString();
-        temp.Price = Umbraco.AssignedContentItem.GetPropertyValue(Price).ToString();
-        temp.Decription = Umbraco.AssignedContentItem.GetPropertyValue(Decription).ToString();
-        if (Umbraco.AssignedContentItem.GetPropertyValue(check).ToString().Equals("True") == true)
-        {
-            temp.Check = true;
-        }
-        else { temp.Check = false; }
-        if (Umbraco.AssignedContentItem.GetPropertyValue(topsell).ToString().Equals("True") == true)
-        {
-            temp.TopSell = true;
-        }
-        else { temp.TopSell = false; }
-        List.Add(temp);
+for (int i = 0; i < 9; i++)
+{
+
+    int j = i + 1;
+    string Brandproduct = "BrandProduct" + j;
+    string Nameproduct = "NameProduct" + j;
+    string ImageProductShow = "ImageProductShow" + j;
+    string ImageProductDetail1 = "ImageProductDetail1" + j;
+    string ImageProductDetail2 = "ImageProductDetail2" + j;
+    string ImageProductDetail3 = "ImageProductDetail3" + j;
+    string Price = "Price" + j;
+    string check = "Check" + j;
+    string topsell = "TopSell" + j;
+    string Decription = "Decription" + j;
+    Product temp = new Product();
+    temp.Brandproduct = Umbraco.AssignedContentItem.GetPropertyValue(Brandproduct).ToString();
+    temp.Nameproduct = Umbraco.AssignedContentItem.GetPropertyValue(Nameproduct).ToString();
+    temp.ImageProductShow = "." + Umbraco.Field(ImageProductShow).ToString();
+    temp.ImageProductDetail1 = "." + Umbraco.Field(ImageProductDetail1).ToString();
+    temp.ImageProductDetail2 = "." + Umbraco.Field(ImageProductDetail2).ToString();
+    temp.ImageProductDetail3 = "." + Umbraco.Field(ImageProductDetail3).ToString();
+    temp.Price = Umbraco.AssignedContentItem.GetPropertyValue(Price).ToString();
+    temp.Decription = Umbraco.AssignedContentItem.GetPropertyValue(Decription).ToString();
+    if (Umbraco.AssignedContentItem.GetPropertyValue(check).ToString().Equals("True") == true)
+    {
+        temp.Check = true;
     }
-    Session["list"] = List;
+    else { temp.Check = false; }
+    if (Umbraco.AssignedContentItem.GetPropertyValue(topsell).ToString().Equals("True") == true)
+    {
+        temp.TopSell = true;
+    }
+    else { temp.TopSell = false; }
+
+    List.Add(temp);
+}
+Session["list"] = List;
 }
 @helper  ShowProduct(List<Product> List)
 {
@@ -127,35 +129,35 @@
                         <div class="input-checkbox">
                             <label for="brand-2">
                                 <span></span>
-                                <li><a href="/DELL">DELL</a></li>
+                                <li><a href="/productbrand?br=DELL">DELL</a></li>
                             </label>
                         </div>
                         <div class="input-checkbox">
 
                             <label for="brand-3">
                                 <span></span>
-                                <li><a href="/SONY">SONY</a></li>
+                                <li><a href="/productbrand?br=SONY">SONY</a></li>
                             </label>
                         </div>
                         <div class="input-checkbox">
 
                             <label for="brand-4">
                                 <span></span>
-                                <li><a href="/ASUS">ASUS</a></li>
+                                <li><a href="/productbrand?br=ASUS">ASUS</a></li>
                             </label>
                         </div>
                         <div class="input-checkbox">
 
                             <label for="brand-5">
                                 <span></span>
-                                <li><a href="/THINKPAD">THINKPAD</a></li>
+                                <li><a href="/productbrand?br=THINKPAD">THINKPAD</a></li>
                             </label>
                         </div>
                         <div class="input-checkbox">
 
                             <label for="brand-6">
                                 <span></span>
-                                <li><a href="/HP">HP</a></li>
+                                <li><a href="/productbrand?br=HP">HP</a></li>
                             </label>
                         </div>
                     </div>
@@ -175,7 +177,7 @@
             <div id="store" class="col-md-9">
                 <!-- store products -->
                 <div class="row">
-                    @ShowProduct((List<Product>)Session["list"])
+                    @ShowProduct(ls)
                 </div>
                 <!-- /store products -->
 

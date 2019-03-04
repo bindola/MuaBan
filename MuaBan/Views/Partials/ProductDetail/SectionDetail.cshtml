@@ -2,106 +2,107 @@
 
 @helper ShowDetail()
 {
-    int id = int.Parse(Request["id"]);
-    List<Product> list = (List<Product>)Session["list"];
-    Product item = list[id];
 
-    <div class="row">
-        <!-- Product main img -->
-        <div class="col-md-5 col-md-push-2">
-            <div id="product-main-img">
-                <div class="product-preview">
-                    <img src="@item.ImageProductDetail1" alt="">
-                </div>
+                    int id = int.Parse(Request["id"]);
+                    List<Product> list = (List<Product>)Session["list"];
+                    Product item = list[id];
 
-                <div class="product-preview">
-                    <img src="@item.ImageProductDetail2" alt="">
-                </div>
+                    <div class="row">
+                        <!-- Product main img -->
+                        <div class="col-md-5 col-md-push-2">
+                            <div id="product-main-img">
+                                <div class="product-preview">
+                                    <img src="@item.ImageProductDetail1" alt="">
+                                </div>
 
-                <div class="product-preview">
-                    <img src="@item.ImageProductDetail3" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- /Product main img -->
-        <!-- Product thumb imgs -->
-        <div class="col-md-2  col-md-pull-5">
-            <div id="product-imgs">
-                <div class="product-preview">
-                    <img src="@item.ImageProductDetail1" alt="">
-                </div>
+                                <div class="product-preview">
+                                    <img src="@item.ImageProductDetail2" alt="">
+                                </div>
 
-                <div class="product-preview">
-                    <img src="@item.ImageProductDetail2" alt="">
-                </div>
-
-                <div class="product-preview">
-                    <img src="@item.ImageProductDetail3" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- /Product thumb imgs -->
-        <!-- Product details -->
-        <div class="col-md-5">
-            <div class="product-details">
-                <h2 class="product-name">@item.Nameproduct</h2>
-                <div>
-                    <div class="product-rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="product-price">@item.Price VNĐ</h3>
-                    <span class="product-available">CÒN HÀNG</span>
-                </div>
-                <p></p>
-
-
-                <ul class="product-links">
-                    <li>Thuong Hieu:</li>
-                    <li><a href="#">@item.Brandproduct</a></li>
-                </ul>
-
-                <ul class="product-links">
-                    <li>Share:</li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-                </ul>
-
-            </div>
-        </div>
-        <!-- /Product details -->
-        <!-- Product tab -->
-        <div class="col-md-12">
-            <div id="product-tab">
-                <!-- product tab nav -->
-                <ul class="tab-nav">
-                    <li class="active"><a data-toggle="tab" href="#tab1">THÔNG SỐ KỸ THUẬT</a></li>
-                </ul>
-                <!-- /product tab nav -->
-                <!-- product tab content -->
-                <div class="tab-content">
-                    <!-- tab1  -->
-                    <div id="tab1" class="tab-pane fade in active">
-                        <div class="row">
-                            <div class="col-md-12">
-                                @item.Decription
+                                <div class="product-preview">
+                                    <img src="@item.ImageProductDetail3" alt="">
+                                </div>
                             </div>
                         </div>
+                        <!-- /Product main img -->
+                        <!-- Product thumb imgs -->
+                        <div class="col-md-2  col-md-pull-5">
+                            <div id="product-imgs">
+                                <div class="product-preview">
+                                    <img src="@item.ImageProductDetail1" alt="">
+                                </div>
+
+                                <div class="product-preview">
+                                    <img src="@item.ImageProductDetail2" alt="">
+                                </div>
+
+                                <div class="product-preview">
+                                    <img src="@item.ImageProductDetail3" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Product thumb imgs -->
+                        <!-- Product details -->
+                        <div class="col-md-5">
+                            <div class="product-details">
+                                <h2 class="product-name">@item.Nameproduct</h2>
+                                <div>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="product-price">@item.Price VNĐ</h3>
+                                    <span class="product-available">CÒN HÀNG</span>
+                                </div>
+                                <p></p>
+
+
+                                <ul class="product-links">
+                                    <li>Thuong Hieu:</li>
+                                    <li><a href="#">@item.Brandproduct</a></li>
+                                </ul>
+
+                                <ul class="product-links">
+                                    <li>Share:</li>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <!-- /Product details -->
+                        <!-- Product tab -->
+                        <div class="col-md-12">
+                            <div id="product-tab">
+                                <!-- product tab nav -->
+                                <ul class="tab-nav">
+                                    <li class="active"><a data-toggle="tab" href="#tab1">THÔNG SỐ KỸ THUẬT</a></li>
+                                </ul>
+                                <!-- /product tab nav -->
+                                <!-- product tab content -->
+                                <div class="tab-content">
+                                    <!-- tab1  -->
+                                    <div id="tab1" class="tab-pane fade in active">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @item.Decription
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /tab1  -->
+                                </div>
+                                <!-- /product tab content  -->
+                            </div>
+                        </div>
+                        <!-- /product tab -->
                     </div>
-                    <!-- /tab1  -->
-                </div>
-                <!-- /product tab content  -->
-            </div>
-        </div>
-        <!-- /product tab -->
-    </div>
 }
 <div class="section">
     <!-- container -->

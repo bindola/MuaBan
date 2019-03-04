@@ -19,9 +19,9 @@ namespace MuaBan.Controller
             return PartialView(string.Format("{0}Navigation.cshtml", Patial_Path));
         }
 
-        public ActionResult RenderSection1()
+        public ActionResult RenderSectionHome()
         {        
-            return PartialView(string.Format("{0}Section1.cshtml", Patial_Path));
+            return PartialView(string.Format("{0}SectionHome.cshtml", Patial_Path));
         }
      
     }
