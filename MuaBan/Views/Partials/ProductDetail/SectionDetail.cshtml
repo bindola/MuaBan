@@ -2,10 +2,11 @@
 
 @helper ShowDetail()
 {
-
-                    int id = int.Parse(Request["id"]);
-                    List<Product> list = (List<Product>)Session["list"];
-                    Product item = list[id];
+List<Product> list = (List<Product>)Session["list"];
+if (list != null && list.Count > 0)
+{
+    int id = int.Parse(Request["id"]);
+    Product item = list[id];
 
                     <div class="row">
                         <!-- Product main img -->
@@ -103,6 +104,11 @@
                         </div>
                         <!-- /product tab -->
                     </div>
+}
+else
+{
+    Response.Redirect("~/Home");
+}
 }
 <div class="section">
     <!-- container -->

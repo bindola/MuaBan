@@ -319,11 +319,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\HomeController.cs" />
-    <Compile Include="Controller\ProductBrandController.cs" />
-    <Compile Include="Controller\ProductDetailController.cs" />
-    <Compile Include="Controller\SiteShareLayoutController.cs" />
-    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductBrandController.cs" />
+    <Compile Include="Controllers\ProductDetailController.cs" />
+    <Compile Include="Controllers\SiteShareLayoutController.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -386,6 +388,8 @@
     <Content Include="Views\ProductBrand.cshtml" />
     <Content Include="Views\Partials\ProductDetail\SectionDetail.cshtml" />
     <Content Include="Views\Partials\ProductBrand\SectionBrand.cshtml" />
+    <Content Include="Views\Partials\Contact\SectionContact.cshtml" />
+    <Content Include="Views\Partials\AboutUs\SectionAboutUs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -398,8 +402,7 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Partials\AboutUs\" />
-    <Folder Include="Views\Partials\Contact\" />
+    <Folder Include="Views\Contacts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
