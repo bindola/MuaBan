@@ -1,0 +1,125 @@
+﻿@using Umbraco.Web.Models;
+@using MuaBan.Models;
+@using Umbraco.Web.Models;
+@using Umbraco.Web.Mvc;
+@using Umbraco.Core.Models;
+
+@helper  ShowProductTop(List<Product> List)
+{
+    if (List != null && List.Count > 0)
+    {
+        int i = 0;
+        foreach (Product product in List)
+        {
+            string url = "/ProductDetail?id=" + i;
+            if (product.Check == true && product.TopSell == true)
+            {
+                <div class="product-widget">
+                    <div class="product-img">
+                        <img src="@product.ImageProductShow" alt="">
+                    </div>
+                    <div class="product-body">
+                        <p class="product-category">@product.Brandproduct</p>
+                        <h3 class="product-name"><a href="@url">@product.Nameproduct</a></h3>
+                        <h4 class="product-price">@product.Price VNĐ</h4>
+                    </div>
+                </div>
+            }
+            i++;
+        }
+    }
+    else
+    {
+        Response.Redirect("~/Home");
+    }
+}
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- ASIDE -->
+            <div id="aside" class="col-md-3">
+                <!-- aside Widget -->
+                <div class="aside">
+                    <h3 class="aside-title">THƯƠNG HIỆU</h3>
+                    <div class="checkbox-filter">
+                        <div class="input-checkbox">
+                            <label for="brand-2">
+                                <span></span>
+                                <li><a href="/productbrand?br=DELL">DELL</a></li>
+                            </label>
+                        </div>
+                        <div class="input-checkbox">
+
+                            <label for="brand-3">
+                                <span></span>
+                                <li><a href="/productbrand?br=SONY">SONY</a></li>
+                            </label>
+                        </div>
+                        <div class="input-checkbox">
+
+                            <label for="brand-4">
+                                <span></span>
+                                <li><a href="/productbrand?br=ASUS">ASUS</a></li>
+                            </label>
+                        </div>
+                        <div class="input-checkbox">
+
+                            <label for="brand-5">
+                                <span></span>
+                                <li><a href="/productbrand?br=THINKPAD">THINKPAD</a></li>
+                            </label>
+                        </div>
+                        <div class="input-checkbox">
+
+                            <label for="brand-6">
+                                <span></span>
+                                <li><a href="/productbrand?br=HP">HP</a></li>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- /aside Widget -->
+                <!-- aside Widget -->
+                <div class="aside">
+                    <h3 class="aside-title">SẢN PHẨM BÁN CHẠY</h3>
+                    @{List<Product> ls = (List<Product>)Session["list"];}
+                    @ShowProductTop(ls)
+                </div>
+                <!-- /aside Widget -->
+            </div>
+            <!-- /ASIDE -->
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">GỬI CÂU HỎI HOẶC PHẢN HỒI CHO CHÚNG TÔI</h3>
+                    </div>
+                    @using (Html.BeginUmbracoForm("HandleSubmitForm", "Contact", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <input class="input" type="text" name="name" placeholder="Họ và Tên">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="phone" placeholder="Số điện thoại">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="title" placeholder="Tiêu đề">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="input" type="text" name="messeage" placeholder="Nội dung"></textarea>
+                        </div>
+                        <input class="primary-btn order-submit" type="submit" value="Gửi">
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

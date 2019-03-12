@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "fe4328537b38277e")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "6ab5f7680a55418")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -909,6 +909,51 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Contact, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Email
+		///</summary>
+		[ImplementPropertyType("email")]
+		public string Email
+		{
+			get { return this.GetPropertyValue<string>("email"); }
+		}
+
+		///<summary>
+		/// Messeage
+		///</summary>
+		[ImplementPropertyType("messeage")]
+		public string Messeage
+		{
+			get { return this.GetPropertyValue<string>("messeage"); }
+		}
+
+		///<summary>
+		/// Phone
+		///</summary>
+		[ImplementPropertyType("phone")]
+		public string Phone
+		{
+			get { return this.GetPropertyValue<string>("phone"); }
+		}
+
+		///<summary>
+		/// Title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return this.GetPropertyValue<string>("title"); }
+		}
+
+		///<summary>
+		/// UserName
+		///</summary>
+		[ImplementPropertyType("userName")]
+		public string UserName
+		{
+			get { return this.GetPropertyValue<string>("userName"); }
 		}
 	}
 

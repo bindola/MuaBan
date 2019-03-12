@@ -8,47 +8,50 @@
 
 @helper GetProduct()
 {
-List<Product> List = new List<Product>();
+    List<Product> List = new List<Product>();
 
-for (int i = 0; i < 9; i++)
-{
-
-    int j = i + 1;
-    string Brandproduct = "BrandProduct" + j;
-    string Nameproduct = "NameProduct" + j;
-    string ImageProductShow = "ImageProductShow" + j;
-    string ImageProductDetail1 = "ImageProductDetail1" + j;
-    string ImageProductDetail2 = "ImageProductDetail2" + j;
-    string ImageProductDetail3 = "ImageProductDetail3" + j;
-    string Price = "Price" + j;
-    string check = "Check" + j;
-    string topsell = "TopSell" + j;
-    string Decription = "Decription" + j;
-    Product temp = new Product();
-    temp.Brandproduct = Umbraco.AssignedContentItem.GetPropertyValue(Brandproduct).ToString();
-    temp.Nameproduct = Umbraco.AssignedContentItem.GetPropertyValue(Nameproduct).ToString();
-    temp.ImageProductShow = "." + Umbraco.Field(ImageProductShow).ToString();
-    temp.ImageProductDetail1 = "." + Umbraco.Field(ImageProductDetail1).ToString();
-    temp.ImageProductDetail2 = "." + Umbraco.Field(ImageProductDetail2).ToString();
-    temp.ImageProductDetail3 = "." + Umbraco.Field(ImageProductDetail3).ToString();
-    temp.Price = Umbraco.AssignedContentItem.GetPropertyValue(Price).ToString();
-    temp.Decription = Umbraco.AssignedContentItem.GetPropertyValue(Decription).ToString();
-    if (Umbraco.AssignedContentItem.GetPropertyValue(check).ToString().Equals("True") == true)
+    for (int i = 0; i < 9; i++)
     {
-        temp.Check = true;
-    }
-    else { temp.Check = false; }
-    if (Umbraco.AssignedContentItem.GetPropertyValue(topsell).ToString().Equals("True") == true)
-    {
-        temp.TopSell = true;
-    }
-    else { temp.TopSell = false; }
 
-    List.Add(temp);
+        int j = i + 1;
+        string Brandproduct = "BrandProduct" + j;
+        string Nameproduct = "NameProduct" + j;
+        string ImageProductShow = "ImageProductShow" + j;
+        string ImageProductDetail1 = "ImageProductDetail1" + j;
+        string ImageProductDetail2 = "ImageProductDetail2" + j;
+        string ImageProductDetail3 = "ImageProductDetail3" + j;
+        string Price = "Price" + j;
+        string check = "Check" + j;
+        string topsell = "TopSell" + j;
+        string Decription = "Decription" + j;
+        Product temp = new Product();
+        temp.Brandproduct = Umbraco.AssignedContentItem.GetPropertyValue(Brandproduct).ToString();
+        temp.Nameproduct = Umbraco.AssignedContentItem.GetPropertyValue(Nameproduct).ToString();
+        temp.ImageProductShow = "." + Umbraco.Field(ImageProductShow).ToString();
+        temp.ImageProductDetail1 = "." + Umbraco.Field(ImageProductDetail1).ToString();
+        temp.ImageProductDetail2 = "." + Umbraco.Field(ImageProductDetail2).ToString();
+        temp.ImageProductDetail3 = "." + Umbraco.Field(ImageProductDetail3).ToString();
+        temp.Price = Umbraco.AssignedContentItem.GetPropertyValue(Price).ToString();
+        temp.Decription = Umbraco.AssignedContentItem.GetPropertyValue(Decription).ToString();
+        if (Umbraco.AssignedContentItem.GetPropertyValue(check).ToString().Equals("True") == true)
+        {
+            temp.Check = true;
+        }
+        else { temp.Check = false; }
+        if (Umbraco.AssignedContentItem.GetPropertyValue(topsell).ToString().Equals("True") == true)
+        {
+            temp.TopSell = true;
+        }
+        else { temp.TopSell = false; }
+
+        List.Add(temp);
+    }
+    Session["list"] = List;
 }
-Session["list"] = List;
-}
+
 @helper  ShowProduct(List<Product> List)
+{
+if (List != null && List.Count > 0)
 {
     int i = 0;
     foreach (Product product in List)
@@ -77,41 +80,52 @@ Session["list"] = List;
                             <i class="fa fa-star"></i>
                         </div>
                     </div>
-                   
-                       <a href="@url">CHI TIẾT</a>
-                   
+
+                    <a href="@url">CHI TIẾT</a>
+
                 </div>
             </div>
+            }
+            i++;
         }
-        i++;
+    }
+    else
+    {
+        Response.Redirect("~/Home");
     }
 }
-
 
 
 
 @helper  ShowProductTop(List<Product> List)
 {
-    foreach (Product product in List)
+    if (List != null && List.Count > 0)
     {
-        if (product.Check == true && product.TopSell == true)
+        int i = 0;
+        foreach (Product product in List)
         {
-            <div class="product-widget">
-                <div class="product-img">
-                    <img src="@product.ImageProductShow" alt="">
+            string url = "/ProductDetail?id=" + i;
+            if (product.Check == true && product.TopSell == true)
+            {
+                <div class="product-widget">
+                    <div class="product-img">
+                        <img src="@product.ImageProductShow" alt="">
+                    </div>
+                    <div class="product-body">
+                        <p class="product-category">@product.Brandproduct</p>
+                        <h3 class="product-name"><a href="@url">@product.Nameproduct</a></h3>
+                        <h4 class="product-price">@product.Price VNĐ</h4>
+                    </div>
                 </div>
-                <div class="product-body">
-                    <p class="product-category">@product.Brandproduct</p>
-                    <h3 class="product-name"><a href="#">@product.Nameproduct</a></h3>
-                    <h4 class="product-price">@product.Price VNĐ</h4>
-                </div>
-            </div>
+            }
+            i++;
         }
     }
-
+    else
+    {
+        Response.Redirect("~/Home");
+    }
 }
-
-
 
 
 
